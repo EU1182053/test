@@ -17,33 +17,30 @@
 			type="hidden" name="act" value="loginAction">
 	</form>
 
-	<h2>Forgot Password</h2>
-	<form action="UserServlet">
-		<label for="username">User Name: </label> <input type="text"
-			name="username" required> <label for="pass">Set New
-			Password: </label> <input type="text" name="pass" id="pass"
-			pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}">
-
-		<label for="confirmpass">Confirm New Password: </label> <input
-			type="password" id="confirmpass" required> <input
-			type="submit" value="SUBMIT"> <input type="reset"> <input
-			type="hidden" name="act" value="forgotPassword">
-
-	</form>
+<a href="forgotPassword.jsp">Forgot Password?</a>
+	<button onclick="forgotPassword.jsp">Forgot Password?</button>
 
 	<%
-	String msg = request.getParameter("msg");
-	if ("valid".equals(msg)) {
+	String registerMsg = request.getParameter("msg");
+	if ("valid".equals(registerMsg)) {
 	%>
 	<h1>Successfully Registered.</h1>
 	<%
 	}
 	%>
 	<%
-	if ("invalid".equals(msg)) {
+	if ("invalid".equals(registerMsg)) {
 	%>
 	<h1>Something went wrong!</h1>
 	<%
+	}
+	%>
+	<%
+	String forgotPasswordMsg = request.getParameter("msg");
+	if("done".equals(forgotPasswordMsg)){
+		%>
+		<h1>Password Change Successful.</h1>
+		<%
 	}
 	%>
 </body>

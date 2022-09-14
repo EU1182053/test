@@ -96,7 +96,27 @@ public class UserServlet extends HttpServlet {
 					response.sendRedirect("login.jsp?msg=invalid");
 			}
 		} else if (userAction.equalsIgnoreCase("forgotPassword"))
-			System.out.println("Request comes in post");
+		{
+			String username = request.getParameter("username");
+			
+			String email = request.getParameter("email");
+			
+			String newPassword = request.getParameter("newPassword");
+			
+			user.setUsername(username);
+			
+			user.setEmail(email);
+			
+			user.setPassword(newPassword);
+
+			b = impl.changePassword(user);
+
+			if (b)
+				response.sendRedirect("login.jsp?msg=done");
+
+			else
+				System.out.println("Something went wrong.....");
+		}
 	}
 
 }

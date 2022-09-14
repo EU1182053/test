@@ -72,9 +72,34 @@ public class UserImpl implements UserDao {
 	}
 
 	
-	public boolean changePassword() {
+	public boolean changePassword(User user) {
 		
-		return false;
+		boolean b = false;
+		String sql = "update user set password=? where username=? and email=?;";
+		try (Connection conn = MyConnection.connect()) {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			
+			pstmt.setString(1, user.getPassword());
+			pstmt.setString(2, user.getUsername());
+			pstmt.setString(3, user.getEmail());
+			
+
+			int no = pstmt.executeUpdate();
+
+			System.out.println("Number of rows affected: " + no);
+			if (no > 0)
+				b = true;
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("");
+		return b;
 	}
 
 	
