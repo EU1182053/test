@@ -1,1 +1,3 @@
 1663135870192	Rename package 'com.db'
+1663254206753	Move 'menuList.jsp' to 'menu'
+1663254214605	Move 'admin.jsp' to 'admin'

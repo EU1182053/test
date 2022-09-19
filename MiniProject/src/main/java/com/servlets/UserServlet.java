@@ -77,9 +77,9 @@ public class UserServlet extends HttpServlet {
 		} else if (userAction.equalsIgnoreCase("loginAction")) {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			if ("admin@gmail.com".equals(user.getEmail()) && "admin".equals(user.getPassword())) {
+			if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
 				session.setAttribute("email", email);
-				response.sendRedirect("admin/admin.jsp");
+				response.sendRedirect("admin/admin.jsp?msg=valid");
 
 			} else {
 
@@ -90,7 +90,7 @@ public class UserServlet extends HttpServlet {
 				b = impl.login(user);
 				if (b)
 //					pw.print("You are logged in successfully....... Welcome "+name);
-					response.sendRedirect("menuList.jsp?msg=valid");
+					response.sendRedirect("menu/menuList.jsp?msg=valid");
 				else
 //					pw.print("Something went wrong.....");
 					response.sendRedirect("login.jsp?msg=invalid");

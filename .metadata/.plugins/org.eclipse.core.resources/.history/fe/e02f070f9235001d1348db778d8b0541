@@ -1,0 +1,64 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.connection.MyConnection"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section>
+		<h1>List of Products</h1>
+		<!--  in action attribute put path of servlet bydefault is get request -->
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Type</th>
+					<th>Available</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% 
+				Connection conn = MyConnection.connect();
+				String sql = "select * from menu;";
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery();
+				while(rs.next()){
+			%>
+			<tr><%out.println(rs.getInt(1)); %></tr>
+			<tr><%out.println(rs.getString(2)); %></tr>
+			<tr><%out.println(rs.getInt(3)); %></tr>
+			<tr><%out.println(rs.getString(4)); %></tr>
+			<tr><%out.println(rs.getString(5)); %></tr>
+			
+			<%} %>
+			</tbody>
+		</table>
+
+		<h3>
+			Product Id:<%
+
+		%>
+		</h3>
+		
+
+		<%
+String msg=request.getParameter("msg");
+if("valid".equals(msg)){
+	 %>
+	 <h1>Admin Log In Successful.</h1>
+
+<%}
+
+	%>
+</body>
+</html>

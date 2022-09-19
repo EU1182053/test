@@ -10,6 +10,9 @@ public class Menu {
 		this.type = type;
 		this.available = available;
 	}
+	public Menu() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Menu [id=" + id + ", price=" + price + ", name=" + name + ", type=" + type + ", available=" + available
