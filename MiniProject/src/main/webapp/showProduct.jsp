@@ -22,7 +22,7 @@
 <body>
 
 	<section>
-		<h1>List of Products</h1>
+		<h1>Product to Update</h1>
 		<!--  in action attribute put path of servlet bydefault is get request -->
 		<form action="searchHome.jsp" method="post">
 			<input type="text" placeholder="search" name="search" />
@@ -30,82 +30,7 @@
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
 		</form>
-		<!-- 
-		<form action="MenuServlet" action="post">
-			<table>
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Type</th>
-						<th>Available</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					Connection conn = MyConnection.connect();
-					String sql = "select * from menu;";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					ResultSet rs = stmt.executeQuery();
-
-					while (rs.next()) {
-					%>
-
-
-					<tr>
-						<td>
-							<%
-							out.println(rs.getInt(1));
-							%>
-						</td>
-						<td>
-							<%
-							out.println(rs.getString(2));
-							%>
-						</td>
-						<td>
-							<%
-							out.println(rs.getInt(3));
-							%>
-						</td>
-						<td>
-							<%
-							out.println(rs.getString(4));
-							%>
-						</td>
-						<td>
-							<%
-							out.println(rs.getString(5));
-							%>
-						</td>
-
-						<td><a
-							href="MenuServlet?action=editById&id=<%rs.getString("id");%>">
-								Edit MenuServlet?action=edit&id=<%
-						rs.getString("id");
-						%>
-						</a></td>
-
-						<td><a
-							href="MenuServlet?action=deleteById&id=<%rs.getString("id");%>">
-								Delete MenuServlet?action=delete&id=<%
-						rs.getString("id");
-						%>
-						</a></td>
-
-					</tr>
-					<br>
-
-					<%
-					}
-					%>
-				</tbody>
-			</table>
-
-		</form>
-		 -->
+		
 		
 
 
@@ -130,6 +55,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+
 
 	</section>
 </body>

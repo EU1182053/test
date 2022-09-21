@@ -10,14 +10,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Show Product</title>
+<title>Edit Product</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<h3>${menu1 }</h3>
+${m }
 	
 	<section>
 		<h1>List of Products</h1>
@@ -28,7 +28,7 @@
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
 		</form>
-		<form action="MenuServlet" action="post">
+		<form action="MenuServlet" method="post">
 			<label for="id">
 			<input type="number" value="${menu.id }" name="id">
 			</label>
@@ -42,9 +42,12 @@
 			<input type="text" value="${menu.type }" name="type">
 			</label>
 			<label for="available">
-			<input type="text" value="${menu.in_stock }" name="available">
+			<input type="text" value="${menu.available }" name="available">
 			</label>
 
+			<input type="submit" value="Update"> 
+			<input type="hidden" name="action" value="Update">
+			
 		</form>
 
 

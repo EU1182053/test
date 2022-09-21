@@ -66,7 +66,7 @@ public class MenuImpl implements MenuDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("");
+//		System.out.println("");
 		return b;
 	}
 
@@ -134,20 +134,22 @@ public class MenuImpl implements MenuDao {
 
 			pstatement.setInt(1, id);
 			ResultSet rs = pstatement.executeQuery();
+			if(rs.next()) {
 
-			id = Integer.parseInt(rs.getString("id"));
-			String name = rs.getString("name");
-			int price = Integer.parseInt(rs.getString("price"));
-			String type = rs.getString("type");
-			String in_stock = rs.getString("in_stock");
+				String name = rs.getString("name");
+				int price = Integer.parseInt(rs.getString("price"));
+				String type = rs.getString("type");
+				String in_stock = rs.getString("in_stock");
 
-			m = new Menu(id, price, name, type, in_stock);
+				m = new Menu(id, price, name, type, in_stock);
+			}
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+//		System.out.println("menuImpl: "+m);
 		return m;
 	
 

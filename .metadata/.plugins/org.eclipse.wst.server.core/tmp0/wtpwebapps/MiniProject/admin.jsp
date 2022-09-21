@@ -15,11 +15,11 @@
 
 	<h3>Add Product</h3>
 	<a href="addProduct.jsp">Add Product</a>
-	
+
 	<h3>Show Products</h3>
 	<a href="MenuServlet?action=show">Show Products</a>
-	
-	
+
+
 	<h3>Order History</h3>
 	<h3>User List</h3>
 	<h3>Log out</h3>
@@ -49,10 +49,8 @@
 
 	<%
 	}
-	
-	
 	%>
-	
+
 	<%
 	msg = request.getParameter("edited");
 	if ("deleted".equals(msg)) {
@@ -61,10 +59,8 @@
 
 	<%
 	}
-	
-	
 	%>
-	
+
 	<%
 	msg = request.getParameter("deleted");
 	if ("deleted".equals(msg)) {
@@ -73,10 +69,18 @@
 
 	<%
 	}
-	
-	
+	%>
+
+	<%
+	}
 	%>
 	
+	<%
+	msg = request.getParameter("msg");
+	if ("edited".equals(msg)) {
+	%>
+	<h1>Edit Successful.</h1>
+
 	<%
 	}
 	%>

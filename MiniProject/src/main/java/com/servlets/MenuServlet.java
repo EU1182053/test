@@ -47,7 +47,7 @@ public class MenuServlet extends HttpServlet {
 		
 		if(editAction.equalsIgnoreCase("show")) {
 			List<Menu> menuList = menuImpl.showFood();
-			System.out.println("editAction show doGet");
+//			System.out.println("editAction show doGet:  "+editAction);
 			session.setAttribute("menuList", menuList);
 			
 			response.sendRedirect("showProduct.jsp");
@@ -56,9 +56,9 @@ public class MenuServlet extends HttpServlet {
 		else if(editAction.equalsIgnoreCase("editById")) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			
-			Menu menu1 = menuImpl.getFoodById(id);
-			 
-			 session.setAttribute("menu1", menu1);
+			 menu = menuImpl.getFoodById(id);
+//			 System.out.println("menu: "+menu);
+			 session.setAttribute("menu", menu);
 			 
 			 response.sendRedirect("editProduct.jsp");
 			
@@ -82,13 +82,10 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+			
 		String menuAction = request.getParameter("action");
-		
-		
 
-		System.out.println("useraction: " + menuAction);
+		System.out.println("menuAction doPost: " + menuAction);
 		
 		HttpSession session = request.getSession();
 
@@ -96,9 +93,7 @@ public class MenuServlet extends HttpServlet {
 		Menu menu = new Menu();
 
 		boolean b;
-
-		
-		
+	
 		if (menuAction.equalsIgnoreCase("addProduct")) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String name = request.getParameter("name");
@@ -121,26 +116,30 @@ public class MenuServlet extends HttpServlet {
 
 		}
 
-
-		
-		
-		if (menuAction.equalsIgnoreCase("editById")) {
-
+		if (menuAction.equalsIgnoreCase("Update")) {
+System.out.println("editById doPost: ");
 			int id = Integer.parseInt(request.getParameter("id"));
+			String name = request.getParameter("name");
+			int price = Integer.parseInt(request.getParameter("price"));
+			String type = request.getParameter("type");
+			String available = request.getParameter("available");
+			
+			
+			menu.setId(id);
+			menu.setName(name);
+			menu.setPrice(price);
+			menu.setType(type);
+			menu.setAvailable(available);
+			
+			b = menuImpl.updateFood(menu);
+			if(b)
+				response.sendRedirect("admin.jsp?msg=edited");
+			else
+				response.sendRedirect("error.jsp");
 			
 
-			System.out.println("id: " + id);
-			menu.setId(id);
 
-			Menu m = menuImpl.getFoodById(id);
-
-			if (m != null)
-			{
-				session.setAttribute("m", m);
-				response.sendRedirect("editProduct.jsp?msg=found");
-			}
-			else
-				response.sendRedirect("admin.jsp?msg=error");
+			
 
 		}
 		
