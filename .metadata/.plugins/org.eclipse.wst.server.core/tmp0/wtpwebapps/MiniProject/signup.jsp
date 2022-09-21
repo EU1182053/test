@@ -37,7 +37,7 @@
             
             <input type="submit" value="REGISTER">
             <input type="reset">
-            <input type="hidden" name="act" value="registerAction"> 
+            <input type="hidden" name="action" value="registerAction"> 
         </form>
     </section>
 </body>

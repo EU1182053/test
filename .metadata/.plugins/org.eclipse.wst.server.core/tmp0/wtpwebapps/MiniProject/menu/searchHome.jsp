@@ -37,11 +37,12 @@
 					String search = request.getParameter("search");
 					out.println("search: "+search);
 					Connection conn = MyConnection.connect();
-					String sql = "SELECT * FROM menu WHERE name LIKE ?%;";
+					String sql = "select * from menu where name like '%?%' or type like '%?%';";
 					out.println("sql: "+sql);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 			
 					stmt.setString(1, search);
+					stmt.setString(2, search);
 					
 					ResultSet rs = stmt.executeQuery();
 					out.println("rs: "+rs);

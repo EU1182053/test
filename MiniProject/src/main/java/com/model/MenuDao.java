@@ -6,6 +6,6 @@ public interface MenuDao {
 
 	public boolean addFood(Menu menu);
 	public boolean updateFood(Menu menu);
-	public boolean deleteFood(Menu menu);
+	public boolean deleteFood(int id);
 	
 }

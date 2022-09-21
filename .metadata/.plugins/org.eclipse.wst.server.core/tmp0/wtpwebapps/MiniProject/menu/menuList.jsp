@@ -70,6 +70,9 @@
 						out.println(rs.getString(5));
 						%>
 					</td>
+					<a href="addToCart.jsp?id=<%rs.getInt(1); %>" >
+					<i class="fa-regular fa-cart-shopping"></i>
+					</a>
 				</tr>
 				<br>
 				<tr>

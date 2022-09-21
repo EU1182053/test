@@ -14,7 +14,7 @@
 		<br> <label>Password:</label><input type="text" name="password"
 			id="pass" required><br> <br> <input type="submit"
 			value="LOGIN"> <input type="reset"> <input
-			type="hidden" name="act" value="loginAction">
+			type="hidden" name="action" value="loginAction">
 	</form>
 
 <a href="forgotPassword.jsp">Forgot Password?</a>

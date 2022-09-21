@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
-		String userAction = request.getParameter("act");
+		String userAction = request.getParameter("action");
 		System.out.println("useraction" + userAction);
 		HttpSession session = request.getSession();
 		UserImpl impl = new UserImpl();
@@ -79,7 +79,7 @@ public class UserServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
 				session.setAttribute("email", email);
-				response.sendRedirect("admin/admin.jsp?msg=valid");
+				response.sendRedirect("admin.jsp?msg=valid");
 
 			} else {
 

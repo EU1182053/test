@@ -1,0 +1,7 @@
+package com.food.util;
+
+public class FoodConstant {
+	
+	String DELETE_FOOD_QUERY = "delete  from menu where id=?;";
+
+}
